@@ -1,91 +1,49 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+"use client";
 
-const inter = Inter({ subsets: ['latin'] })
+import React, { useState } from "react";
 
-export default function Home() {
+import Sidebar from "@/components/partials/Sidebar";
+import Header from "@/components/partials/Header";
+import WelcomeBanner from "@/components/partials/dashboard/WelcomeBanner";
+import DashboardAvatars from "@/components/partials/dashboard/DashboardAvatars";
+import FilterButton from "@/components/DropdownFilter";
+import Datepicker from "@/components/Datepicker";
+import DashboardCard01 from "@/components/partials/dashboard/DashboardCard01";
+import DashboardCard02 from "@/components/partials/dashboard/DashboardCard02";
+import DashboardCard03 from "@/components/partials/dashboard/DashboardCard03";
+import DashboardCard04 from "@/components/partials/dashboard/DashboardCard04";
+import DashboardCard05 from "@/components/partials/dashboard/DashboardCard05";
+import DashboardCard06 from "@/components/partials/dashboard/DashboardCard06";
+import DashboardCard07 from "@/components/partials/dashboard/DashboardCard07";
+import DashboardCard08 from "@/components/partials/dashboard/DashboardCard08";
+import DashboardCard09 from "@/components/partials/dashboard/DashboardCard09";
+import DashboardCard10 from "@/components/partials/dashboard/DashboardCard10";
+import DashboardCard11 from "@/components/partials/dashboard/DashboardCard11";
+
+type Props = {};
+
+const Dashboard = (props: Props) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <div className="flex h-screen overflow-hidden">
+      {/* Sidebar */}
+      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+
+      {/* Content area */}
+      <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+        {/*  Site header */}
+        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+
+        <main>
+          <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+            {/* Welcome banner */}
+            <WelcomeBanner />
+          </div>
+        </main>
       </div>
+    </div>
+  );
+};
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+export default Dashboard;
